@@ -1,0 +1,102 @@
+*{
+    margin:0;
+    text-decoration: none;
+    list-style:none;
+    padding:0;
+    box-sizing: border-box;
+  }
+  nav{
+    background:#3B609F;
+    height:80px;
+    width:100%;
+  }
+  label.logo{
+    text-transform: capitalize;
+    color:white;
+    line-height:80px;
+    padding:0 100px;
+    font-weight:bold;
+    font-size:30px;
+    align-items: center;
+  }
+  .pasi{
+    float:right;
+    margin-right:20px;
+    align-items: center;
+  }
+  header nav ul li{
+    display:inline-block;
+    line-height:60px;
+    margin:7px 13px;
+    font-weight:bold;
+  }
+  .acc{
+    color : white;
+    position : relative;
+    top : 5px;
+  }
+  header nav ul li a {
+    color:white;
+    font-size : 17px;
+    text-transform: uppercase;
+    padding:7px 13px;
+    border-radius:2em;
+  }
+  a.active, a:hover{
+    background:#681D50;
+    transition : all 0.5s ease-in-out;
+  }
+  .richard{
+    text-align:center;
+    text-transform:capitalize;
+    font-family:'arial';
+    color:#681D50;
+    margin-bottom:1cm;
+  }
+  main div ul li {
+    display:inline-block;
+    margin:30px 110px;
+    padding:7px 8px;
+  }
+  main div ul li a button {
+    padding:10px 20px;
+    border-radius :5em;
+    color:#fff;
+    text-transform:uppercase;
+    font-family:'arial';
+    background:#B20047;
+    list-style: height 2px;
+  }
+  button:hover{
+    background:#681D50;
+    transition: all 0.5s ease-in-out;
+  }
+  .phone{
+    display :none;
+    text-align : center ! important;
+    align-items: center;
+    justify-content: space-between;
+    border : solid 10px white;;
+    border-radius : 2rem;
+    color : white;
+    background-color: dodgerblue;
+    padding : 0.5rem;
+    text-decoration: underline;
+    text-decoration-color : #681D50;
+    grid-gap : 5rem , 2rem;
+  }
+  
+  @media(max-width : 950px){
+    .pasi{
+      display : none;
+    }
+    .phone{
+      display :grid;
+      text-align : center ! important;
+      align-items: center;
+      justify-content: center;
+      grid-gap :10px 50px;
+      padding : 10px;
+  
+    }
+  }
