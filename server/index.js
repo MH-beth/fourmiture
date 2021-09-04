@@ -228,7 +228,7 @@ app.post("/username/:link", (req , res) => {
 })
 
 
-// UNDONE : SEARCH WITH SPECIFIQ CLASSE
+// DONE : SEARCH WITH SPECIFIC CLASSE
 app.post("/search/classe", (req , res) => {
     const classe = req.body.classe;
     const q = "SELECT * FROM posts WHERE statue = ? AND class = ?";
@@ -244,7 +244,7 @@ app.post("/search/classe", (req , res) => {
     })
 })
 
-//UNDONE : SEARCH POSTS RELATED TO SPECIFIK SCHOOLS
+//DONE : SEARCH POSTS RELATED TO SPECIFIC SCHOOLS
 app.post("/search/school", (req , res) => {
     const school = req.body.school;
     const q = "SELECT * FROM posts WHERE statue = ? AND school = ?";
@@ -260,7 +260,7 @@ app.post("/search/school", (req , res) => {
     })
 })
 
-// UNDONE : SEARCH WITH RELATED CLASSE AND SCHOOL
+// DONE : SEARCH WITH RELATED CLASSE AND SCHOOL
 app.post("/search/school/classe", (req , res) => {
     const school = req.body.school;
     const statue = "Disponible";
@@ -277,6 +277,9 @@ app.post("/search/school/classe", (req , res) => {
         }
     })
 })
+
+// UNDONE : SEE ALL POSTS
+
 
 
 
