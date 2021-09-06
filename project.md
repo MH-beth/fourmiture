@@ -20,3 +20,5 @@ Faire /parameteres = {
 faire /search/:classe 
 
 make school names match url
+
+make a reports history
