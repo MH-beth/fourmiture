@@ -44,3 +44,23 @@ CREATE TABLE `ban`(
 ALTER TABLE `ban`
     MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
+CREATE TABLE `reports`(
+    `id` int(11) NOT NULL PRIMARY KEY,
+    `username` varchar(52) NOT NULL,
+    `reported_id` varchar(52) NOT NULL,
+    `reason` TEXT NOT NULL,
+    `creation` datetime DEFAULT current_timestamp()
+)ENGINE = InnoDB DEFAULT CHARSEt = latin1;
+
+ALTER TABLE `reports`
+    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+CREATE TABLE `comments`(
+    `id` int(11) NOT NULL PRIMARY KEY,
+    `usrename` varchar(52) NOT NULL,
+    `link` TEXT NOT NULL,
+    `comment` TEXT NOT NULL,
+    `creation` datetime DEFAULT current_timestamp()
+)ENGINE = InnoDB DEFAULT CHARSET=Latin1;
+ALTER TABLE `comments`
+    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
