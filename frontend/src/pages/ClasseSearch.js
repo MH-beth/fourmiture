@@ -14,7 +14,7 @@ const ClasseSearch = ({match}) => {
         return(
             <div>
                 <ul>
-                    {posts.map((post , key) => <li key = {key}><Cart title = {post.title} picture = {post.pictures} username = {post.username} link = {post.userLink} classe = {post.class} school = {post.school} links = {post.link}/></li>)}
+                    {posts.map((post , key) => <li key = {key}><Cart title = {post.title} picture = {post.pictures} username = {post.username} link = {post.userLink} classe = {post.class} school = {post.school} links = {post.link} statue = {post.statue} price = {post.price} date = {post.creation}/></li>)}
                 </ul>
             </div>
         );

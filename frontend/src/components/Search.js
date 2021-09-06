@@ -33,7 +33,7 @@ const Search = () => {
       const handleSubmit = e => {
           e.preventDefault();
           if(classe.length !== 0 && school.length !== 0){
-
+            window.location.href = `/search/all/${school}/${classe}`;
           }
           if(school && !classe){
             window.location.href = `/search/school/${school}`
@@ -42,7 +42,7 @@ const Search = () => {
           if(classe.length !== 0 && school.length === 0){
             window.location.href = `/search/classe/${classe}`
           }else{
-              window.location.href = "/err";
+              console.log("else statement")
           }
       }
     return (

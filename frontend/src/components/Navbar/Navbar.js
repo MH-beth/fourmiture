@@ -3,6 +3,7 @@ import "./Navbar.css";
 import AccountBalanceIcon from '@material-ui/icons/AccountBalance';
 import Button from "@material-ui/core/Button"
 import LocalGroceryStoreIcon from '@material-ui/icons/LocalGroceryStore';
+import HomeIcon from '@material-ui/icons/Home';
 
 const Navbar = () => {
   return (
@@ -11,7 +12,7 @@ const Navbar = () => {
             <nav>
                 <label className="logo"><LocalGroceryStoreIcon  />Fourmiture</label>
                 <ul className='pasi'>
-                    <li><a className='active' href='/'>Home</a></li>
+                    <li><a className='active' href='/'><HomeIcon/> Home</a></li>
                     <li><a href='/register'>Register</a></li>
                     <li><a href='/login'>Login</a></li>
                 </ul>

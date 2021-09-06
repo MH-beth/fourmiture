@@ -58,7 +58,7 @@ export default function SMenu() {
               handleClose(); 
             if(option === "Paramètre") { window.location.href="/dashboard/options"}
             if(option === "Déconnection"){Auth.logout()}
-            if(option === "Historique d'Annonces"){window.location.href="/dashboard/connections"}
+            if(option === "Historique d'Annonces"){window.location.href="/postsHistory"}
           }}>
             {option}
           </MenuItem>

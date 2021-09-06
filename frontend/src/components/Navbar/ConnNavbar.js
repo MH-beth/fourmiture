@@ -6,6 +6,7 @@ import SMenu from "./SMenu";
 import { useCookies } from 'react-cookie';
 import LocalGroceryStoreIcon from '@material-ui/icons/LocalGroceryStore';
 import {CLIENT} from "../../constants";
+import HomeIcon from '@material-ui/icons/Home';
 
 const ConnNavbar = () => {
     const [cookies , setCookies] = useCookies(['user']);
@@ -16,7 +17,7 @@ const ConnNavbar = () => {
             <nav>
                 <label className="logo"><LocalGroceryStoreIcon  />  Fourmiture</label>
                 <ul className='pasi'>
-                    <li><a className='active' href='/'>Home</a></li>
+                    <li><a className='active' href='/'><HomeIcon/> Home</a></li>
                     <li><a href='/addPost'>Faire Une Annonce</a></li>
                     <li><a href = {profile}>Profile</a></li>
                     <li className = "acc"><SMenu/></li>

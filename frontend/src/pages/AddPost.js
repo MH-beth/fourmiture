@@ -39,6 +39,13 @@ const AddPost = () => {
                 if(classe.length !== 0){
                   console.log(link);
                     Posts.addPost(cookies.username , cookies.link , title , texte , picture , price , classe ,school, link , setStatue);
+                    setTitle("");
+                    setTexte("");
+                    setPicture("");
+                    setPrice("");
+                    setClasse("");
+                    setSchool("");
+                    setTimeout(() => window.location.href = "/", 2000);
                 }else{
                     setStatue("Merci de spécifier une classe");
                 }
@@ -116,9 +123,6 @@ const AddPost = () => {
       <MenuItem value="La Résidence">La Résidence</MenuItem>
       <MenuItem value="Ecole internationale de Casablanca ORT">Ecole internationale de Casablanca ORT</MenuItem>
       <MenuItem value="Léon l'Africain">Léon l'Africain</MenuItem>
-        <MenuItem value="Terminal">Terminal</MenuItem>
-        <MenuItem value="Première">Première</MenuItem>
-        <MenuItem value="Seconde">Seconde</MenuItem>
       </Select>
     </FormControl>
             <Avatar alt = "Picture" src = {picture}/>

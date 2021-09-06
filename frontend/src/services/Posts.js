@@ -69,14 +69,95 @@ class Posts {
             })
     }
 
-    //UNDONE ! 
-    setSold(link , setStatue){
-        Axios.post("/setSold", {link : link})
+    userPosts(username , setPosts , setStatue){
+        Axios.post(`${API_URL}/userPosts`, {username : username})
+            .then(response => {
+                if(response.data.message){
+                    setPosts(response.data.message);
+                }
+            })
+    }
+
+    deleteUserPost(username , link , setStatue){
+        Axios.post(`${API_URL}/deletePost`, {username : username , link : link})
+            .then(response => {
+                (response.data.message) ? setStatue(response.data.message) : window.location.href = "/err";
+            })
+    }
+
+    updatePost(username , link , setPosts , setStatue){
+        Axios.post(`${API_URL}/updateInfo`, {username : username , link : link})
+            .then(response => {
+                if(response.data.message){
+                    setPosts(response.data.message)
+                }else{
+                    setStatue(response.data.statue)
+                }
+            })
+    }
+
+    updateSchool(username , link , school , setStatue){
+        Axios.post(`${API_URL}/updateSchool`, {username : username , link : link , school : school})
+            .then(response => {
+                if(response.data.message){
+                    setStatue(response.data.message);
+                }else{
+                    window.location.href = "/postsHistory";
+                }
+            })
+    }
+
+    updateTitle(username , link , title , setStatue){
+        Axios.post(`${API_URL}/updateTitle`, {username : username , link : link , title : title})
             .then(response => {
                 if(response.data.message){
                     setStatue(response.data.message);
                 }else{
                     window.location.href = "/err";
+                }
+            })
+    }
+
+    updatePrice(username , link , price , setStatue){
+        Axios.post(`${API_URL}/updatePrice`, {username : username , link : link , price : price})
+            .then(response => {
+                (response.data.message) ? setStatue(response.data.message) : window.location.href = "/err";
+            })
+    }
+
+    updateClasse(username , link , classe , setStatue){
+        Axios.post(`${API_URL}/updateClasse`, {username : username , link : link , classe : classe})
+            .then(response => {
+                (response.data.message) ? setStatue(response.data.message) : window.location.href = "/err";
+            })
+    }
+
+    setSold(username , link , setStatue){
+        Axios.post(`${API_URL}/sold`, {username : username , link : link})
+            .then(response => {
+                (response.data.message) ? setStatue(response.data.message) : window.location.href = "/err";
+            })
+    }
+
+    addComment(username , link , comment , setStatue){
+        Axios.post(`${API_URL}/addComment`, {username : username , link : link , comment : comment})
+            .then(response => {
+                if(response.data.message){
+                    setStatue(response.data.message)
+                    setTimeout(() => window.location.reload(), 1000);
+                }else{
+                    window.location.href = "/err";
+                }
+            })
+    }
+
+    seeAllComments(link , setStatue , setPosts){
+        Axios.post(`${API_URL}/seeComment`, {link : link})
+            .then(response => {
+                if(response.data.message){
+                    setPosts(response.data.message);
+                }else{
+                    setStatue(response.data.statue)
                 }
             })
     }

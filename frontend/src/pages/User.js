@@ -23,7 +23,7 @@ const User = ({match}) => {
         return(
             <div>
                 <h1><Avatar alt = "photo de profile" src = {user.picture}/> {user.username}</h1>
-                <p> id : {user.link}</p>
+                <p> id : {user.link} <Button variant = "contained" color = "primary" onClick = {() => window.location.href = `/report/${user.link}`}>Signaler</Button></p>
                 <CopyToClipboard text = {user.link}>
                 <Button variant = "contained" color = "primary" startIcon = {<FileCopyIcon/>}>Copier L'id</Button>
                 </CopyToClipboard> 
