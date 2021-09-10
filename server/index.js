@@ -442,14 +442,15 @@ app.post("/seeComment", (req , res) => {
 })
 //######################################### End Posts ###################################################
 
-//######################################### Profile Report  ###################################################
+//######################################### Profile Report/update  ###################################################
 //UNDONE: report user
 app.post("/reportUser", (req , res) => {
     const username = req.body.username;
     const link = req.body.link;
+    const id = req.body.id;
     const reason = req.body.reason;
-    const q = "INSERT INTO reports(username , reported_id , reason) VALUES (?,?,?)";
-    db.query(q , [username , link , reason], (err , results) => {
+    const q = "INSERT INTO reports(username , reported_id , reason, link) VALUES (?,?,?,?)";
+    db.query(q , [username , link , reason, id], (err , results) => {
         if(err){
             throw new Error(err);
         }
@@ -460,7 +461,43 @@ app.post("/reportUser", (req , res) => {
         }
     })
 })
-//######################################### End profile Report  ###################################################
+
+// see All Reports
+app.post("/reportHistory", (req , res) => {
+    const username = req.body.username;
+    const q = "SELECT * FROM reports WHERE username = ?";
+    db.query(q , [username], (err , results) => {
+        if(err){
+            throw new Error(err);
+        }
+        if(results[0]){
+            res.send({message : results});
+        }else{
+            res.send({statue : "Aucun Signalement N'a été reporté"});
+        }
+    })
+})
+
+//update username
+app.post("/usernameUpdate", (req , res) => {
+    const username = req.body.username;
+    const newUsername = req.body.newUsername;
+    const q = "UPDATE FROM users SET username = ? WHERE username = ?";
+    db.query(q, [username , newUsername], (err , results) => {
+        if(err){
+            throw new Error(err);
+        }
+        if(results){
+            res.send({message : "Le nom d'utilisateur a été modifier avec succés"})
+        }else{
+            res.send({statue : "Error"})
+        }
+    })
+})
+
+
+//######################################### End profile Report/update  ###################################################
+
 
 
 app.listen(PORT , () => console.log(`Running on Port ${PORT} `));
