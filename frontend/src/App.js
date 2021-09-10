@@ -19,6 +19,8 @@ import PostHistory from './pages/PostsHistory';
 import Update from './pages/Update';
 import Reports from './services/Reports';
 import AddReport from './pages/AddReport';
+import ReportHistory from './pages/ReportsHistory';
+import UpdateUser from './pages/UpdateUser';
 
 const App = () => {
   return (
@@ -47,6 +49,12 @@ const App = () => {
             {(CONNECTED === "Connected") ? <PostHistory/> : <Login/>}
           </Route>
           <Route exact path = "/report/:link" component = {AddReport}/>
+          <Route exact path = "/reportsHistory">
+            {(CONNECTED === "Connected") ? <ReportHistory/> : <Login/>}
+          </Route>
+          <Route exact path = "/updateUser">
+            {(CONNECTED=== "Connected") ? <UpdateUser/> : <Login/>}
+          </Route>
           <Route exact path = "/params/:link" component = {Update}/>
           <Route path ="*" component = {NotFound}/>
         </Switch>

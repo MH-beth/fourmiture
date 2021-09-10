@@ -37,7 +37,7 @@ export default function BasicTable() {
 
   const rows = [];
   posts.map(post => rows.push(createData(post.link , post.title , post.school , post.class , post.price , post.statue, post.creation)))
-  if(posts !== undefined && statue.length === 0 ){
+  if(posts !== undefined && statue.length === 0){
     console.log(rows);
     return (
       <TableContainer component={Paper}>

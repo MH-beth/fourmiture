@@ -6,7 +6,7 @@ const Err = () => {
         <div>
             <h1>Une Erreur S'est Produite :| : </h1>
             <h2>Qu'est ce qui s'est passé : </h2>
-            <p>Il s'agit d'une erreur technique pouvant venir de notre part , Nous nous excusons de ce malentendu ! </p>
+            <p>On ne sait pas , nous vous proposons de reactualiser la page !</p>
             <Button variant = "contained" color = "primary" onClick = {() => window.location.href = "/"}>Retourner Au Marché</Button>
         </div>
     )

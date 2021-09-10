@@ -10,6 +10,7 @@ import { useCookies } from 'react-cookie';
 const options = [
     "Paramètre",
     "Historique d'Annonces",
+    "Historique des Signalements",
     "Déconnection"
 ];
 
@@ -59,6 +60,7 @@ export default function SMenu() {
             if(option === "Paramètre") { window.location.href="/dashboard/options"}
             if(option === "Déconnection"){Auth.logout()}
             if(option === "Historique d'Annonces"){window.location.href="/postsHistory"}
+            if(option === "Historique des Signalements"){window.location.href = "/reportsHistory"}
           }}>
             {option}
           </MenuItem>
