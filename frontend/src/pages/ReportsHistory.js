@@ -56,7 +56,7 @@ export default function ReportHistory() {
                   <TableCell align="right">{row.calories}</TableCell>
                   <TableCell align="right">{row.fat}</TableCell>
                   <TableCell align="right">{row.carbs}</TableCell>
-                  <TableCell align="right">{row.protein.toString()}</TableCell>
+                  <TableCell align="right">{row.protein}</TableCell>
                   <TableCell align = "right">{row.statue}</TableCell>
                 </TableRow>
               ))}

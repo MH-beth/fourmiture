@@ -1,0 +1,23 @@
+div ul li{
+    display:inline-block;
+    line-height:60px;
+    margin:7px 13px;
+    font-weight:bold;
+  }
+
+div ul li a {
+    color:white;
+    font-size : 17px;
+    text-transform: uppercase;
+    padding:7px 13px;
+    border-radius:2em;
+  }
+
+.Text{
+  color : white;
+    background : #3B609F;
+    text-align : center;
+  }
+h6{
+  text-decoration: underline;
+}

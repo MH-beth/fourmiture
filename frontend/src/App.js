@@ -21,44 +21,12 @@ import Reports from './services/Reports';
 import AddReport from './pages/AddReport';
 import ReportHistory from './pages/ReportsHistory';
 import UpdateUser from './pages/UpdateUser';
+import Routes from './Routes';
 
 const App = () => {
   return (
     <div>
-      {(CONNECTED === "Connected") ? <ConnNavbar/> : <Navbar/> }
-      <Router>
-        <Switch>
-          <Route exact path = "/err" component = {Err}/>
-          <Route exact path = "/register">
-            {(CONNECTED === "Connected") ? <Redirect to = "/"/> : <Register/>}
-          </Route>
-          <Route exact path = "/" component = {Dashboard}/>
-          <Route exact path = "/login">
-            {(CONNECTED  === "Connected") ? <Redirect to = "/"/> : <Login/>}
-          </Route>
-          <Route exact path = "/addPost">
-            {(CONNECTED === "Connected") ? <AddPost/> : <Login/>}
-          </Route>
-          <Route exact path = "/text" component = {Allposts}/>
-          <Route exact path = "/username/:link" component = {User}/>
-          <Route exact path ="/post/:link" component = {Post}/>
-          <Route exact path = "/search/school/:school" component = {SchoolSearch}/>
-          <Route exact path = "/search/classe/:classe" component = {ClasseSearch}/>
-          <Route exact path = "/search/all/:school/:classe" component = {ClasseSchool}/>
-          <Route exact path = "/postsHistory">
-            {(CONNECTED === "Connected") ? <PostHistory/> : <Login/>}
-          </Route>
-          <Route exact path = "/report/:link" component = {AddReport}/>
-          <Route exact path = "/reportsHistory">
-            {(CONNECTED === "Connected") ? <ReportHistory/> : <Login/>}
-          </Route>
-          <Route exact path = "/updateUser">
-            {(CONNECTED=== "Connected") ? <UpdateUser/> : <Login/>}
-          </Route>
-          <Route exact path = "/params/:link" component = {Update}/>
-          <Route path ="*" component = {NotFound}/>
-        </Switch>
-      </Router>
+      <Routes/>
     </div>
   )
 }

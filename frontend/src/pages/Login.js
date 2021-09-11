@@ -19,8 +19,9 @@ const Login = () => {
             <h1>Connectez Vous à Votre Compte Fourmiture : </h1>
             <br/> 
             <TextField id = "standart-basic"  label = "Nom D'utilisateur" onChange = {e => setUsername(e.target.value)}/>
-            <TextField id = "standart-basic" type="password" label = "Password" onChange = {e => setPassword(e.target.value)}/>    
-            <Button varaint = "contained" color = "primary" onClick = {(e) => handleSubmit(e)}>Se Connecter</Button>
+            <TextField id = "standart-basic" type="password" label = "Password" onChange = {e => setPassword(e.target.value)}/>
+            <br/>    
+            <Button variant = "contained" color = "primary" onClick = {(e) => handleSubmit(e)}>Se Connecter</Button>
             <div className = "statue">
                 <p>{statue}</p>
             </div>

@@ -35,7 +35,7 @@ const User = ({match}) => {
                     <li>+212 {user.phone}</li>
                 </ul>
                 
-                <p>Date de Creation : {user.creation.toString()}</p>
+                <p>Date de Creation : {user.creation}</p>
             </div>
         );
     }else{

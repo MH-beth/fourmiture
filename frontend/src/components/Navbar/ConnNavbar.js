@@ -24,6 +24,13 @@ const ConnNavbar = () => {
                 </ul>
             </nav>
         </header>
+        <div className = "phone">
+          <h1>Menu de Navigation</h1>
+          <Button variant="contained" color="primary" href = "/"  >Home</Button>
+          <Button variant="contained" color="primary"href = "/addPost">Faire Une Annonce</Button>
+          <Button variant="contained" color="primary" href = {profile} >Profile</Button>
+          <Button variant = "contained" color = "primary"><SMenu/></Button>
+        </div>
     </div>
   )
 }

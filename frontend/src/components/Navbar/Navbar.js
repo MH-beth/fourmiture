@@ -10,7 +10,7 @@ const Navbar = () => {
     <div>
         <header>
             <nav>
-                <label className="logo"><LocalGroceryStoreIcon  />Fourmiture</label>
+                <label className="logo"><LocalGroceryStoreIcon  />Fourmitures</label>
                 <ul className='pasi'>
                     <li><a className='active' href='/'><HomeIcon/> Home</a></li>
                     <li><a href='/register'>Register</a></li>
@@ -19,10 +19,10 @@ const Navbar = () => {
             </nav>
         </header>
         <div className = "phone">
-          <h1>Menue</h1>
+          <h1>Menu de Navigation</h1>
           <Button variant="contained" color="primary" href = "/"  >Home</Button>
-          <Button variant="contained" color="primary"href = "/all-stories"  >Storiez</Button>
-          <Button variant="contained" color="primary" href = "/add-story" >Write Your Storiez</Button>
+          <Button variant="contained" color="primary"href = "/register">Register</Button>
+          <Button variant="contained" color="primary" href = "/Login" >Login</Button>
         </div>
     </div>
   )

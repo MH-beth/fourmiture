@@ -57,7 +57,7 @@ export default function SMenu() {
         {options.map((option) => (
           <MenuItem key={option} selected={option === 'Pyxis'} onClick={() => {
               handleClose(); 
-            if(option === "Paramètre") { window.location.href="/dashboard/options"}
+            if(option === "Paramètre") { window.location.href="/updateUser"}
             if(option === "Déconnection"){Auth.logout()}
             if(option === "Historique d'Annonces"){window.location.href="/postsHistory"}
             if(option === "Historique des Signalements"){window.location.href = "/reportsHistory"}

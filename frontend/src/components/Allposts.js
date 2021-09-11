@@ -13,7 +13,7 @@ const Allposts = () => {
                     if(response.data.message){
                         console.log(response.data.message);
                         setPosts(response.data.message)
-                        console.log(response.data.message[0].creation.toString())
+                        console.log(response.data.message[0].creation)
                     }else{
                         setStatue(response.data.statue);
                     }
