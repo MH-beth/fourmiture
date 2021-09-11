@@ -10,15 +10,14 @@ app.use(express.json());
 app.use(cors());
 const PORT = process.env.PORT || 5000
 
-
 const db = mysql.createConnection(
     {
-        user : "root",
-        hostname : "localhost",
-        password : "",
-        database : "safebourse"
+        user : "sql11436207",
+        host : "sql11.freesqldatabase.com",
+        password : "SDbgucY5Cc",
+        database : "sql11436207"
     }
-)
+);
 
 const passcode = "U2FsdGVkX19TXVr9iQp56sDRVp2/UV6c75vx5H+cXkVBE14+0NQv";
 
@@ -482,8 +481,8 @@ app.post("/reportHistory", (req , res) => {
 app.post("/usernameUpdate", (req , res) => {
     const username = req.body.username;
     const newUsername = req.body.newUsername;
-    const q = "UPDATE FROM users SET username = ? WHERE username = ?";
-    db.query(q, [username , newUsername], (err , results) => {
+    const q = "UPDATE users SET username = ? WHERE username = ?";
+    db.query(q, [newUsername, username], (err , results) => {
         if(err){
             throw new Error(err);
         }
@@ -491,6 +490,68 @@ app.post("/usernameUpdate", (req , res) => {
             res.send({message : "Le nom d'utilisateur a été modifier avec succés"})
         }else{
             res.send({statue : "Error"})
+        }
+    })
+})
+
+app.post("/checkUsername", (req , res) => {
+    const username = req.body.username;
+    const q = "SELECT * FROM users WHERE username = ?";
+    db.query(q , [username], (err , results) => {
+        if(err){
+            throw new Error(err);
+        }
+        if(results[0]){
+            res.send({statue : "Ce Nom D'utilisateur est deja utiliser dans un autre compte"});
+        }else{
+            res.send({message : "All Good"});
+        }
+    })
+})
+
+app.post("/updateEmail", (req , res)=> {
+    const email = req.body.email;
+    const username = req.body.username;
+    const q = "UPDATE users SET email = ? WHERE username =?";
+    db.query(q , [email , username], (err , results) => {
+        if(err){
+            throw new Error(err);
+        }
+        if(results){
+            res.send({message : "Email Mis A Jour"})
+        }else{
+            res.send({statue : "Une Erreur S'est produite"})
+        }
+    })
+} )
+
+app.post("/checkEmail", (req , res) => {
+    const email = req.body.email; 
+    const q = "SELECT * FROM users WHERE email = ?";
+    db.query(q , [email], (err , results)=> {
+        if(err){
+            throw new Error(err);
+        }
+        if(results[0]){
+            res.send({statue : "Email Deja Utilisé"});
+        }else{
+            res.send({message : "All Good"});
+        }
+    })
+})
+
+app.post("/updatePassword", (req , res) => {
+    const password = crypt(req.body.password);
+    const username = req.body.username;
+    const q = "UPDATE users SET password = ? WHERE username = ?";
+    db.query(q , [password , username], (err , results) => {
+        if(err){
+            throw new Error(err);
+        }
+        if(results){
+            res.send({message : "Votre Mot De Passe à été mis à jour"});
+        }else{
+            res.send({statue : "Une Erreur S'est produite"})
         }
     })
 })
