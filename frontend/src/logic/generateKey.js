@@ -29,10 +29,8 @@ export const generatekey = () => {
     ];
     let res = [];
     for (let i = 0; i <= 20; i++) {
-      res[i] = alphabet[Math.round(Math.random() * alphabet.length - 1)];
+      res[i] = alphabet[Math.floor(Math.random() * alphabet.length - 1)];
     }
-    console.log(res);
-    console.log(res.join(""));
     return res.join("");
   };
   

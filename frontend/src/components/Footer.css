@@ -5,17 +5,17 @@ div ul li{
     font-weight:bold;
   }
 
-div ul li a {
-    color:white;
+.TextMOUAD ul li a {
+  color : white;
     font-size : 17px;
     text-transform: uppercase;
     padding:7px 13px;
     border-radius:2em;
   }
 
-.Text{
+  .TextMOUAD{
   color : white;
-    background : #3B609F;
+    background : #3B609F; 
     text-align : center;
   }
 h6{

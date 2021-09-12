@@ -23,6 +23,7 @@ import UpdateUser from './pages/UpdateUser';
 import About from './pages/About';
 import Mention from './components/Mention';
 import Footer from './components/Footer';
+import ConfirmEmail from './pages/ConfirmEmail';
 
 const Routes = () => {
   return (
@@ -60,6 +61,9 @@ const Routes = () => {
           <Route exact path = "/params/:link" component = {Update}/>
           <Route exact path = "/about" component = {About}/>
           <Route exact path = "/mentionlegal" component = {Mention}/>
+          <Route exact path = "/confirmation/fynealnhwyqkrcrjtnasvqrjgqrvaklnmibgrpotsducjwtvyyt">
+            {(sessionStorage.getItem("registerStatue") === "true") ? <ConfirmEmail/> : <Register/>}
+          </Route>
           <Route path ="*" component = {NotFound}/>
         </Switch>
       </Router>

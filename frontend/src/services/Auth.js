@@ -2,7 +2,7 @@ import Axios from "axios";
 import {API_URL} from "../constants";
 
 class Auth {
-    register(username , firstname , lastname , password , email , phone , link , picture , setStatue){
+    register(e,username , firstname , lastname , password , email , phone , link , picture , setStatue, sendEmail){
         Axios.post(`${API_URL}/register`, 
         {
             username : username ,
@@ -16,29 +16,45 @@ class Auth {
         }).then(response => {
             if(response.data.message){
                 setStatue(response.data.message)
-                window.location.href = "/login";
+                sessionStorage.removeItem("registerStatue");
+                sendEmail(e);
+                this.login(username , password , setStatue);
+                setTimeout(() => window.location.href = "/", 3000);
             }else{
                 window.location.href = "/err";
             }
         })
     }
 
-    checkExistancy(username , firstname , lastname , password , email , phone , link , picture , setStatue){
+    checkExistancy(e,username , firstname , lastname , password , email , phone , link , picture , setStatue, setCookies , setSub, sendEmail, setUsername, id){
         Axios.post(`${API_URL}/check`, {username : username , email : email , phone : phone})
             .then(response => {
                 if(response.data.message){
-                    this.checkBan(username , firstname , lastname , password , email , phone , link , picture , setStatue)
+                    this.checkBan(e,username , firstname , lastname , password , email , phone , link , picture , setStatue, setCookies , setSub,sendEmail, setUsername, id)
                 }else{
                     setStatue(response.data.statue)
                 }
             })
     }
 
-    checkBan(username , firstname , lastname , password , email , phone , link , picture , setStatue){
+    checkBan(e,username , firstname , lastname , password , email , phone , link , picture , setStatue, setCookies , setSub, sendEmail, setUsername, id){
         Axios.post(`${API_URL}/checkBan`, {username : username, email : email , phone : phone})
             .then(response => {
                 if(response.data.message){
-                    this.register(username , firstname , lastname , password , email , phone , link , picture , setStatue);
+                        setSub(true)
+                                setCookies("username", username , {path : "/"});
+                                setCookies("firstname", firstname , {path : "/"});
+                                setCookies("lastname", lastname , {path : "/"});
+                                setCookies("password", password , {path : "/"});
+                                setCookies("email", email, {path : "/"});
+                                setCookies("phone", phone , {path : "/"});
+                                setCookies("link", link , {path : "/"});
+                                setCookies("picture", picture , {path : "/"});
+                                setCookies("id", id , {path : "/"});
+                                sendEmail(e);
+                                setUsername("");
+                                sessionStorage.setItem("registerStatue", "true");
+                                setTimeout(() => window.location.href = "/confirmation/fynealnhwyqkrcrjtnasvqrjgqrvaklnmibgrpotsducjwtvyyt", 5000);
                 }else{
                     setStatue(response.data.statue)
                 }

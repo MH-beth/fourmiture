@@ -9,7 +9,7 @@ const Footer = () => {
         <div>
             <br/><br/>
             <hr/>
-            <div className = "Text">
+            <div className = "TextMOUAD">
             <br/><br/>
             <ul>
                 <li><a href ={mention}>Mentions Légale</a></li>

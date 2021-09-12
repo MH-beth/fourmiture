@@ -1,11 +1,31 @@
-import { Avatar, Button, TextField } from '@material-ui/core'
+import { Avatar, Button, CircularProgress, TextField } from '@material-ui/core'
 import React, {useState} from 'react'
 import UploadImage from '../components/UploadImage';
 import { generatekey } from '../logic/generateKey';
 import Auth from '../services/Auth';
+import generateId from '../logic/generateId';
+import emailjs from 'emailjs-com';
 import validator from "validator";
+import { useCookies } from 'react-cookie';
 
 const Register = () => {
+    const [cookies , setCookies] = useCookies(['register']);
+    const [id , setId] = React.useState(generateId());
+    function sendEmail(e) {
+        e.preventDefault();
+    
+        emailjs.send('service_vus4dqh', 'template_t860gvm',{
+            ids: id,
+            username: username,
+            code: id,
+            reply_to: email,
+            }, 'user_FCQ62TmBeEBGLsPlHcW6B')
+          .then((result) => {
+              console.log(result.text);
+          }, (error) => {
+              console.log(error.text);
+          });
+      }
     const handleSubmit = (e) => {
         e.preventDefault();
         if(password === conf){
@@ -13,8 +33,9 @@ const Register = () => {
                 if(username.length !== 0 && password.length !== 0){
                     if(firstname.length !== 0 && lastname.length !== 0){
                         if(validator.isMobilePhone(phone , "any")){
-                            Auth.checkExistancy(username , firstname , lastname , password , email , phone , link , picture , setStatue);
-                        }else{
+                            Auth.checkExistancy(e,username , firstname , lastname , password , email , phone , link , picture , setStatue, setCookies , setSub, sendEmail, setUsername, id);
+                            }
+                        else{
                             setStatue("Merci de spécifier U numéro de telephone Valide ! ")
                         }
                     }else{
@@ -35,6 +56,7 @@ const Register = () => {
     const [username , setUsername ] = useState("");
     const [password , setPassword] = useState("");
     const [conf , setConf] = useState("");
+    const [sub , setSub] = useState(false)
     const [email , setEmail] = useState("")
     const [statue , setStatue] = useState("");
     const [phone , setPhone] = useState("");
@@ -59,6 +81,9 @@ const Register = () => {
             <Button variant = "contained" color = "primary" onClick = {(e) => handleSubmit(e)}>S'inscrire</Button>
             <div className = "statue">
                 <p>{statue}</p>
+            </div>
+            <div>
+                {(sub) ? <CircularProgress/> : null}
             </div>
         </div>
     )
