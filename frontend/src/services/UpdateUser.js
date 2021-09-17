@@ -3,6 +3,28 @@ import {API_URL} from "../constants";
 
 
 class UpdateUser {
+    updateReportsUsername(username , newUsername){
+        Axios.post(`${API_URL}/updateReportUsername`, {username : username ,  newUsername : newUsername})
+            .then(response => {
+                (response.data.statue) ? console.log(response.data.statue) : console.log(response.data.statue);
+            })
+    }
+
+    updatePostsUsername(username , newUsername){
+        Axios.post(`${API_URL}/updatePostsUsername`, {username : username , newUsername : newUsername})
+            .then(response => {
+            (response.data.statue) ? console.log(response.data.statue) : console.log(response.data.statue);
+        })
+    }
+
+    updateComments(username , newUsername){
+        Axios.post(`${API_URL}/updateCommentsUsername`, {username : username , newUsername : newUsername})
+            .then(response => {
+            (response.data.statue) ? console.log(response.data.statue) : console.log(response.data.statue);
+        })
+    }
+
+
     updateUsername(username , newUsername, setStatue, setCookies){
         Axios.post(`${API_URL}/usernameUpdate`, {username : username , newUsername : newUsername})
             .then(response => {
@@ -20,6 +42,9 @@ class UpdateUser {
             .then(response => {
                 if(response.data.message){
                     this.updateUsername(username , newUsername , setStatue, setCookies);
+                    this.updateReportsUsername(username , newUsername);
+                    this.updatePostsUsername(username , newUsername);
+                    this.updateComments(username , newUsername);
                 }else{
                     setStatue(response.data.statue)
                 }

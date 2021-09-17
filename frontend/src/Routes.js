@@ -24,6 +24,8 @@ import About from './pages/About';
 import Mention from './components/Mention';
 import Footer from './components/Footer';
 import ConfirmEmail from './pages/ConfirmEmail';
+import PasswordFor from './pages/PasswordFor';
+import CheckPassword from './pages/CheckPassword';
 
 const Routes = () => {
   return (
@@ -63,6 +65,10 @@ const Routes = () => {
           <Route exact path = "/mentionlegal" component = {Mention}/>
           <Route exact path = "/confirmation/fynealnhwyqkrcrjtnasvqrjgqrvaklnmibgrpotsducjwtvyyt">
             {(sessionStorage.getItem("registerStatue") === "true") ? <ConfirmEmail/> : <Register/>}
+          </Route>
+          <Route exact path = "/forgetPassword" component = {PasswordFor}/>
+          <Route exact path = "/forgetPassword/changePassword">
+            {(sessionStorage.getItem("stay") === "true") ? <CheckPassword/> : <PasswordFor/>}
           </Route>
           <Route path ="*" component = {NotFound}/>
         </Switch>

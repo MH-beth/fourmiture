@@ -8,6 +8,7 @@ import Select from '@material-ui/core/Select';
 import { Button } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 import { CLIENT } from '../constants';
+import "../assets/css/Search.css"
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -46,7 +47,7 @@ const Search = () => {
           }
       }
     return (
-        <div>
+        <div className = "main">
         <h1>Rechercher selon vos Critères ! </h1>
         <FormControl className={classes.formControl}>
         <InputLabel id="demo-simple-select-label">Classe Scolaire</InputLabel>

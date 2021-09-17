@@ -3,6 +3,7 @@ import Posts from '../services/Posts'
 import Axios from "axios"
 import { API_URL } from '../constants';
 import Cart from './Cart';
+import Card from './Card';
 
 const Allposts = () => {
     const [posts , setPosts] = useState();
@@ -23,7 +24,7 @@ const Allposts = () => {
         return(
             <div>
                 <ul>
-                    {posts.map((post , key) => <li key = {key}><Cart title = {post.title} picture = {post.pictures} username = {post.username} link = {post.userLink} classe = {post.class} school = {post.school} links = {post.link} statue = {post.statue} price = {post.price} date = {post.creation}/></li>)}
+                    {posts.map((post , key) => <li key = {key}><Card title = {post.title} picture = {post.pictures} username = {post.username} link = {post.userLink} classe = {post.class} school = {post.school} links = {post.link} statue = {post.statue} price = {post.price} /></li>)}
                 </ul>
             </div>
         );

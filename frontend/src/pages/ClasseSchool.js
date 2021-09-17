@@ -1,7 +1,7 @@
 import { Button } from '@material-ui/core';
 import React, {useEffect, useState} from 'react'
 import Posts from '../services/Posts';
-import Cart from "../components/Cart";
+import Card from "../components/Card";
 
 const ClasseSchool = ({match}) => {
     const classe = match.params.classe;
@@ -16,7 +16,7 @@ const ClasseSchool = ({match}) => {
         return(
             <div>
                 <ul>
-                    {posts.map((post , key) => <li key = {key}><Cart title = {post.title} picture = {post.pictures} username = {post.username} link = {post.userLink} classe = {post.class} school = {post.school} links = {post.link} statue = {post.statue} price = {post.price} date = {post.creation}/></li>)}
+                    {posts.map((post , key) => <li key = {key}><Card title = {post.title} picture = {post.pictures} username = {post.username} link = {post.userLink} classe = {post.class} school = {post.school} links = {post.link} statue = {post.statue} price = {post.price} date = {post.creation}/></li>)}
                 </ul>
             </div>
         );

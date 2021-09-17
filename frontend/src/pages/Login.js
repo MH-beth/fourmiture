@@ -39,7 +39,6 @@ const Login = () => {
     return (
         <div>
             <h1>Connectez Vous à Votre Compte Fourmiture : </h1>
-            <h1>Votre Ip : {ip}</h1>
             <br/> 
             <TextField id = "standart-basic"  label = "Nom D'utilisateur" onChange = {e => setUsername(e.target.value)}/>
             <TextField id = "standart-basic" type="password" label = "Password" onChange = {e => setPassword(e.target.value)}/>
@@ -49,9 +48,9 @@ const Login = () => {
             render="explicit"
             onloadCallback={captchaLoaded}
             verifyCallback = {verifyCallback}
-            theme="dark"
             />    
             <Button variant = "contained" color = "primary" onClick = {(e) => handleSubmit(e)}>Se Connecter</Button>
+            <Button variant = "contained" color  = "primary" onClick = {() => window.location.href = "/forgetPassword"}>Mots de passe Oubliée</Button>
             <div className = "statue">
                 <p>{statue}</p>
             </div>

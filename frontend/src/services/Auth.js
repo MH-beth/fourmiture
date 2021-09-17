@@ -1,5 +1,7 @@
 import Axios from "axios";
 import {API_URL} from "../constants";
+import generateId from "../logic/generateId";
+import emailjs from 'emailjs-com';
 
 class Auth {
     register(e,username , firstname , lastname , password , email , phone , link , picture , setStatue, sendEmail){
@@ -99,6 +101,34 @@ class Auth {
     logout(){
         sessionStorage.removeItem("Connection-statue");
         window.location.href = "/login";
+    }
+    checkExistancyChangePassword(username , setStatue , setCookies){
+        const id = generateId();
+        console.log(id);
+        Axios.post(`${API_URL}/checkPass`, {username : username })
+            .then(response => {
+                if(response.data.message){
+                    emailjs.send('service_vus4dqh', 'template_t860gvm',{
+                        ids: id,
+                        username: response.data.message.username,
+                        code: id,
+                        reply_to: response.data.message.email,
+                        }, 'user_FCQ62TmBeEBGLsPlHcW6B')
+                      .then((result) => {
+                          console.log(result.text);
+                      }, (error) => {
+                          console.log(error.text);
+                      });
+                   setStatue("Un mail Vous à été envoyer a votre adresse mail !");
+                   setCookies("username" , response.data.message.username , {path : "/"})
+                   setCookies("Email" ,response.data.message.email , {path : "/"});
+                   setCookies("code", id , {path : "/"});
+                   sessionStorage.setItem("stay", "true")
+                   setTimeout(() => window.location.href = "/forgetPassword/changePassword", 5000)
+                }else{
+                    setStatue("User Not Found");
+                }
+            })
     }
 }
 export default new Auth();

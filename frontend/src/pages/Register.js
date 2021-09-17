@@ -7,6 +7,7 @@ import generateId from '../logic/generateId';
 import emailjs from 'emailjs-com';
 import validator from "validator";
 import { useCookies } from 'react-cookie';
+import "../assets/css/Register.css";
 
 const Register = () => {
     const [cookies , setCookies] = useCookies(['register']);
@@ -64,26 +65,36 @@ const Register = () => {
     const [picture , setPicture] = useState("https://firebasestorage.googleapis.com/v0/b/mycars-rent.appspot.com/o/images%2Fblank-profile-picture-973460_1280%20(1).png?alt=media&token=1620c234-bf80-409b-9893-d8c46c911715");
     return (
         <div>
+            <div className = "data">
             <h1>Rejoignez Fourmiture Dés Maintenant</h1>
             <p>Votre Id : {link}</p>
+            </div>
+            <div className = "register">
             <div className = "name">
-                <TextField id = "standart-basic" label  ="Prénom" onChange = {(e) => setFirstname(e.target.value)}/>
-                <TextField id = "standart-basic" label  ="Nom" onChange = {(e) => setLastname(e.target.value)}/>
-            </div>
-            <TextField id = "standart-basic" label  ="Nom D'Utilisateur" onChange = {(e) => setUsername(e.target.value)}/>
-            <TextField id = "standart-basic" type="password" label  ="Mot de passe" onChange = {(e) => setPassword(e.target.value)}/>
-            <TextField id = "standart-basic" type="password" label  ="Confirmez Votre Mot de passe" onChange = {(e) => setConf(e.target.value)}/>
-            <TextField id = "standart-basic" label  ="Email" onChange = {(e) => setEmail(e.target.value)}/>
-            <TextField id = "standart-basic" type ="number" label  ="Telephone (+212)" onChange = {(e) => setPhone(e.target.value)}/>
-            <Avatar alt = "Photo de profile" src = {picture}/>
-            <UploadImage setPicture = {setPicture} title = "Photo De Profile"/>
-            <br/>
-            <Button variant = "contained" color = "primary" onClick = {(e) => handleSubmit(e)}>S'inscrire</Button>
-            <div className = "statue">
-                <p>{statue}</p>
-            </div>
-            <div>
-                {(sub) ? <CircularProgress/> : null}
+            <TextField id = "standart-basic" label  ="Prénom" onChange = {(e) => setFirstname(e.target.value)}/>
+            <TextField id = "standart-basic" label  ="Nom" onChange = {(e) => setLastname(e.target.value)}/>
+        </div>
+        <TextField id = "standart-basic" label  ="Nom D'Utilisateur" onChange = {(e) => setUsername(e.target.value)}/>
+        <br/>
+        <div className = "pass">
+        <TextField id = "standart-basic" type="password" label  ="Mot de passe" onChange = {(e) => setPassword(e.target.value)}/>
+        <TextField id = "standart-basic" type="password" label  ="Confirmez Votre Mot de passe" onChange = {(e) => setConf(e.target.value)}/>
+        <br/>
+        </div>
+        <TextField id = "standart-basic" label  ="Email" onChange = {(e) => setEmail(e.target.value)}/>
+        <br/>
+        <TextField id = "standart-basic" type ="number" label  ="Telephone (+212)" onChange = {(e) => setPhone(e.target.value)}/>
+        <br/>
+        <Avatar alt = "Photo de profile" src = {picture} size = "medium"/>
+        <UploadImage setPicture = {setPicture} title = "Photo De Profile"/>
+        <br/>
+        <Button variant = "contained" color = "primary" onClick = {(e) => handleSubmit(e)}>S'inscrire</Button>
+        <div className = "statue">
+            <p>{statue}</p>
+        </div>
+        <div>
+            {(sub) ? <CircularProgress/> : null}
+        </div>
             </div>
         </div>
     )

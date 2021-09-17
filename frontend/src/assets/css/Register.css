@@ -1,0 +1,18 @@
+.data{
+    text-align : center;
+    color : white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.data p{
+    text-decoration: underline; 
+}
+*{
+    margin : 0;
+    padding : 0;
+}
+
+.name{
+    margin : 5px;
+    display : flex;
+}
