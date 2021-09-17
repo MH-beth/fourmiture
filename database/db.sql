@@ -64,3 +64,34 @@ CREATE TABLE `comments`(
 )ENGINE = InnoDB DEFAULT CHARSET=Latin1;
 ALTER TABLE `comments`
     MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+CREATE TABLE `admins`(
+    `id` int(11) NOT NULL PRIMARY KEY,
+    `username` varchar(52) NOT NULL,
+    `password` TEXT NOT NULL,
+    `email` varchar(52) NOT NULL,
+    `passcode` varchar(52) NOT NULL
+)ENGINE = InnoDB DEFAULT CHARSET=Latin1;
+ALTER TABLE `admins`
+    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+CREATE TABLE `adminsLogs`(
+    `id` int(11) NOT NULL PRIMARY KEY,
+    `username` varchar(52) NOT NULL,
+    `action` TEXT NOT NULL,
+    `date` TEXT NOT NULL 
+)ENGINE = InnoDB DEFAULT CHARSET=Latin1;
+ALTER TABLE `adminsLogs`
+    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+CREATE TABLE `requests`(
+    `id` int(11) NOT NULL PRIMARY KEY,
+    `username` varchar(52) NOT NULL,
+    `userLink` TEXT NOT NULL,
+    `request` TEXT NOT NULL,
+    `class` varchar(52) NOT NULL,
+    `school` varchar(52) NOT NULL,
+    `creation` datetime NOT NULL,
+)ENGINE =InnoDB DEFAULT CHARSET =Latin1;
+ALTER TABLE `requests`
+    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT; 
