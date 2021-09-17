@@ -106,6 +106,21 @@ app.post("/check", (req , res) => {
         }
     })
 })
+
+app.post("/checkPass", (req , res) => {
+    const username = req.body.username;
+    const q = "SELECT * FROM users WHERE username = ? OR email = ?";
+    db.query(q , [username , username], (err , results) => {
+        if(err){
+            throw new Error(err);
+        }
+        if(results[0]){
+            res.send({message : results[0]})
+        }else{
+            res.send({statue : "Cette Utilisateur N'existe pas"})
+        }
+    })
+})
 // check Register Ban
 app.post("/checkBan", (req , res)=> {
     const username = req.body.username;
@@ -508,6 +523,58 @@ app.post("/checkUsername", (req , res) => {
         }
     })
 })
+
+//Update Reports related to username
+app.post("/updateReportUsername", (req , res) => {
+    const username = req.body.username;
+    const newUsername = req.body.newUsername;
+    const q = "UPDATE reports SET username = ? WHERE username = ?";
+    db.query(q , [newUsername , username], (err , results) => {
+        if(err){
+            throw new Error(err);
+        }
+        if(results){
+            res.send({message : "ALl Good"});
+        }else{
+            res.send({statue : "Error Couldn't change the reports username"});
+        }
+    })
+})
+
+//update username in posts:
+app.post("/updatePostsUsername", (req , res) => {
+    const username = req.body.username;
+    const newUsername = req.body.newUsername;
+    const q = "UPDATE posts SET username = ? WHERE username = ?";
+    db.query(q , [newUsername  , username], (err , results)=> {
+        if(err){
+            throw new Error(err);
+        }
+        if(results){
+            res.send({message : "All Good"});
+        }else{
+            res.send({statue : "Couldn't Update Posts Username"});
+        }
+    })
+})
+
+//Update comments username
+app.post("/updateCommentsUsername", (req , res) => {
+    const username = req.body.username;
+    const newUsername = req.body.newUsername;
+    const q = "UPDATE comments SET username = ? WHERE username = ?";
+    db.query(q , [newUsername ,username], (err , results) => {
+        if(err){
+            throw new Error(err);
+        }
+        if(results){
+            res.send({message : "All Good"})
+        }else{
+            res.send({statue : "Could update username comments"});
+        }
+    })
+})
+
 
 app.post("/updateEmail", (req , res)=> {
     const email = req.body.email;
